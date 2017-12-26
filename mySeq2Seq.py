@@ -5,7 +5,7 @@ import tensorflow as tf
 import tensorflow.contrib.seq2seq as seq2seq
 from tensorflow.contrib.rnn import LSTMCell, LSTMStateTuple, GRUCell
 from tensorflow.python.layers import core as layers_core
-import Touka
+import utils
 
 class Seq2SeqModel():
     def __init__(self, 
@@ -93,18 +93,18 @@ class Seq2SeqModel():
         
     def make_train_inputs(self, input_seq, input_seq_id, target_seq, target_seq_id):
 
-        inputs_, inputs_length_ = Touka.prepare_batch(inputs = input_seq, 
+        inputs_, inputs_length_ = utils.prepare_batch(inputs = input_seq, 
                                                       dim = 3, 
                                                       emb_size = self.embedding_size,
                                                       time_major = self.time_major)
-        inputs_id_, inputs_id_length_ = Touka.prepare_batch(inputs = input_seq_id, 
+        inputs_id_, inputs_id_length_ = utils.prepare_batch(inputs = input_seq_id, 
                                                             dim = 2,
                                                             time_major = self.time_major)
-        targets_, targets_length_ = Touka.prepare_batch(inputs = target_seq, 
+        targets_, targets_length_ = utils.prepare_batch(inputs = target_seq, 
                                                         dim = 3, 
                                                         emb_size = self.embedding_size,
                                                         time_major = self.time_major)
-        targets_id_, targets_id_length_ = Touka.prepare_batch(inputs = target_seq_id,
+        targets_id_, targets_id_length_ = utils.prepare_batch(inputs = target_seq_id,
                                                               dim = 2,
                                                               time_major = self.time_major)
         
