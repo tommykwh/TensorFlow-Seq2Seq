@@ -1,11 +1,9 @@
 import numpy as np
 
-def prepare_batch(inputs, dim, max_sequence_length = None):
+def prepare_batch(inputs):
     sequence_lengths = [len(seq) for seq in inputs]
     batch_size = len(inputs)
-    
-    if max_sequence_length is None:
-        max_sequence_length = max(sequence_lengths)
+    max_sequence_length = max(sequence_lengths)
         
     inputs_batch_major = np.zeros(shape=[batch_size, max_sequence_length], 
                                   dtype=np.int32)
@@ -17,23 +15,18 @@ def prepare_batch(inputs, dim, max_sequence_length = None):
     return inputs_batch_major, sequence_lengths
 
         
-def batch_generator(seq, seq1, seq2, seq3):            
+def batch_generator(x, y):            
     while True:
-        i = np.random.randint(0, len(seq))
-        yield [seq[i], seq1[i], seq2[i], seq3[i]]
+        i = np.random.randint(0, len(x))
+        yield [x[i], y[i]]
         
-def input_generator(seq, seq1, seq2, seq3, batch_size):
-    gen_batch = batch_generator(seq, seq1, seq2, seq3)
-    
-    r = []
-    r1 = []
-    r2 = []
-    r3 = []
+def input_generator(x, y, batch_size):
+    gen_batch = batch_generator(x, y)
 
+    x_batch = []
+    y_batch = []
     for i in range(batch_size):
-        a, b, c, d = next(gen_batch)
-        r += [a]
-        r1 += [b]
-        r2 += [c]
-        r3 += [d]
-    return r, r1, r2, r3
+        a, b= next(gen_batch)
+        x_batch += [a]
+        y_batch += [b]
+    return x_batch, y_batch
