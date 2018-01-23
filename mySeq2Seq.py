@@ -139,10 +139,7 @@ class Seq2SeqModel():
             )
 
     def _init_bidirectional_encoder(self):
-        '''
-            to be fixed
-            
-        '''
+        ''' to be fixed '''
 #         with tf.variable_scope("Bidirectional_Encoder") as scope:
 #             def make_cell(rnn_size):
 #                 enc_cell = tf.nn.rnn_cell.BasicLSTMCell(rnn_size)
@@ -215,7 +212,7 @@ class Seq2SeqModel():
             return decoder_cell, initial_state
         
         with tf.variable_scope("Decoder") as scope:
-            projection_layer = layers_core.Dense(units = self.vocab_size) # use_bias
+            projection_layer = layers_core.Dense(units = self.vocab_size, use_bias = False) # use_bias
             self.encoder_state = tuple(self.encoder_state[-1] for _ in range(self.num_layers))
 
             decoder_cell, initial_state = create_decoder_cell()
@@ -235,7 +232,7 @@ class Seq2SeqModel():
                     self.decoder_state_train,
                     final_sequence_length) = tf.contrib.seq2seq.dynamic_decode(
                             decoder = training_decoder, 
-                            impute_finished = False,
+                            impute_finished = True,
                             scope = scope
                     )
 
@@ -259,7 +256,8 @@ class Seq2SeqModel():
                         self.decoder_outputs_inference, __, ___ = tf.contrib.seq2seq.dynamic_decode(
                             decoder = inference_decoder,
                             maximum_iterations = tf.round(tf.reduce_max(self.encoder_inputs_length)) * 2,
-                            impute_finished = False)
+                            impute_finished = False,
+                            scope = scope)
 
                         self.decoder_predictions_inference = tf.identity(self.decoder_outputs_inference.predicted_ids)
                     else:
