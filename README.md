@@ -13,7 +13,9 @@ The hyperparameter and other details in codes are not yet tuned.
 * NLTK  
 
 ## Features
-* Tokenization and build vocabulary list  
+* Tokenization
+* Padding (<EOS> in the end of encoder input; <GO> in the beginning of decoder input and <EOS> in the end)
+* Vocabulary list building
 * Autoencoder/encoder-decoder in multi-RNN-layers  
 * Attention mechanism (Luong's)  
 * Batch-training process  
@@ -22,11 +24,11 @@ The hyperparameter and other details in codes are not yet tuned.
 ## Features In Progress
 * Bidirectional encoder  
 * BLEU score metrics  
-* Bucketing (Optional. Because TensorFlow's dynamic_decode doesn't require fixed length input)  
+* Bucketing (Optional. Because TensorFlow's dynamic_decode doesn't require fixed length input anymore)  
 
 ## Usage
-Import mySeq2Seq.py to have Seq2SeqModel class.  
-You may refer to train.ipynb for the training process and data flow.
+Import *mySeq2Seq.py* to have *Seq2SeqModel* class.  
+You may refer to *train.ipynb* for the training process and data flow.
 
 ## Reference
 [TensorFlow/nmt](https://github.com/tensorflow/nmt)  
