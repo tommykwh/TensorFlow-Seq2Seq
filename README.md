@@ -31,6 +31,6 @@ Import *mySeq2Seq.py* to have *Seq2SeqModel* class.
 You may refer to *train.ipynb* for the training process and data flow.
 
 ## Reference
-[TensorFlow/nmt](https://github.com/tensorflow/nmt)  
 [Massive Exploration of Neural Machine Translation Architectures](https://arxiv.org/abs/1703.03906)  
-[JayParks/tf-seq2seq](https://github.com/JayParks/tf-seq2seq)  
+[TensorFlow / nmt](https://github.com/tensorflow/nmt)  
+[JayParks / tf-seq2seq](https://github.com/JayParks/tf-seq2seq)  
