@@ -14,7 +14,7 @@ The hyperparameter and other details in codes are not yet tuned.
 
 ## Features
 * Tokenization
-* Padding (<EOS> in the end of encoder input; <GO> in the beginning of decoder input and <EOS> in the end)
+* Padding (*EOS* in the end of encoder input; *GO* in the beginning of decoder input and *EOS* in the end)
 * Vocabulary list building
 * Autoencoder/encoder-decoder in multi-RNN-layers  
 * Attention mechanism (Luong's)  
