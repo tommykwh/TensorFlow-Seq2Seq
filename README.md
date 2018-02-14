@@ -3,7 +3,7 @@
 Implement English-to-French Neural Machine Translation task by implenting seq2seq, encoder-decoder in LSTM layers with Attention mechanism and Beamsearch inference decoder in TensorFlow 1.3
 
 ## Datasets
-[WMT 16](http://www.statmt.org/wmt16/translation-task.html)
+[WMT 16](http://www.statmt.org/wmt16/translation-task.html)  
 I took the English and French dataset in news-test2013 as training example.
 The hyperparameter and other details in codes are not yet tuned.
 
